@@ -4,17 +4,20 @@ import PackageDescription
 let package = Package(
     name: "hello",
     platforms: [
-       .macOS(.v12)
+        .iOS(.v13),
+        .macOS(.v12),
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
+        .package(url: "https://github.com/vapor/fluent.git", .upToNextMajor(from: "4.0.0")),
     ],
     targets: [
         .target(
             name: "App",
             dependencies: [
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
+                .product(name: "Fluent", package: "fluent")
             ],
             swiftSettings: [
                 // Enable better optimizations when building in Release configuration. Despite the use of

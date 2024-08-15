@@ -2,6 +2,10 @@ import Vapor
 import FluentKit
 
 func routes(_ app: Application) throws {
+    app.get { req -> String in
+        "Connected"
+    }
+    
     let v1Routes = app.grouped("v1")
     v1Routes.post("images", "upload") { req -> EventLoopFuture<Response> in
         struct ImageUpload: Content {

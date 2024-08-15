@@ -13,6 +13,10 @@ func routes(_ app: Application) throws {
         }
         
         do {
+            print(req.body.description)
+            req.headers.forEach {
+                print("\($0.name), \($0.value)")
+            }
             let imageUpload = try req.content.decode(ImageUpload.self)
             let file = imageUpload.file
             let savePath = "Public/images/\(file.filename)"

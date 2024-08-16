@@ -8,5 +8,7 @@
 import Vapor
 
 struct EnsureApiDomainMiddleware: Middleware {
-    
+    func respond(to request: Request, chainingTo next: Responder) -> EventLoopFuture<Response> {
+        return next.respond(to: request)
+    }
 }
